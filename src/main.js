@@ -3,13 +3,17 @@ import Vue from 'vue'
 
 // 1.1 导入路由的包
 import router from './router'
-// 1.2 安装路由
-Vue.use(MintUI)
+
 // 引用MintUI组件 全局
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
-import { Header } from 'mint-ui';
+// 1.2 安装路由
+Vue.use(MintUI)
+import { Header } from 'mint-ui'
+import { Swipe, SwipeItem } from 'mint-ui';
 
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 //导入mui
 import "./lib/mui/css/mui.min.css"
 //导入扩展图标样式
