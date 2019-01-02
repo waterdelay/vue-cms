@@ -7,10 +7,22 @@ import router from './router'
 // 引用MintUI组件 全局
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+// 导入vue-resource
+import VueResource from 'vue-resource'
+// 注册vue-resource
+Vue.use(VueResource)
+
+// 配置post请求以传统表单形式提交参数 application/x-www-form-urlencoded
+Vue.http.options.emulateJSON = true;
+
+Vue.config.productionTip = false
 // 1.2 安装路由
 Vue.use(MintUI)
-import { Header } from 'mint-ui'
-import { Swipe, SwipeItem } from 'mint-ui';
+import {
+  Header,
+  Swipe,
+  SwipeItem,
+} from 'mint-ui'
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);

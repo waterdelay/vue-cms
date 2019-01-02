@@ -27,7 +27,9 @@
       </router-link>
     </nav>
 
-    <router-view></router-view>
+    <transition>
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -36,8 +38,35 @@ export default {};
 </script>
 
 <style lang="less" >
-.aapp_container {
+body {
+  background-color: #fff;
+}
+.app_container {
   padding-top: 40px;
+  padding-bottom: 50px;
   overflow-x: hidden;
+  .mint-header {
+    z-index: 999;
+  }
+  .mint-swipe-items-wrap {
+    .mint-swipe-item {
+      background-color: pink;
+    }
+  }
+  .v-enter {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .v-leave-to {
+    position: absolute;
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .v-enter-active,
+  .v-leave-active {
+    transition: all 0.6s ease;
+  }
 }
 </style>
