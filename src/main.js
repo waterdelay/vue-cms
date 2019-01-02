@@ -11,12 +11,20 @@ import 'mint-ui/lib/style.css'
 import VueResource from 'vue-resource'
 // 注册vue-resource
 Vue.use(VueResource)
-
+Vue.http.options.root = 'http://www.lovegf.cn:8899/';
 // 配置post请求以传统表单形式提交参数 application/x-www-form-urlencoded
 Vue.http.options.emulateJSON = true;
 
 Vue.config.productionTip = false
 // 1.2 安装路由
+
+//创建一个全局过滤器  更改时间格式
+//导入moment 时间包
+import moment from "moment"
+
+Vue.filter("dataFormat",function(dateStr,pattern="YYYY-MM-DD HH:mm:ss"){
+    return moment(dateStr).format(pattern)
+})
 Vue.use(MintUI)
 import {
   Header,

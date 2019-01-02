@@ -9,6 +9,7 @@ import menberContainer from "../views/menber"
 import shopcarContainer from "../views/shopcar"
 import searchContainer from "../views/search"
 import newListContainer from "@/views/newList"
+import newInfoContainer from "@/views/newInfo"
 export default new Router({
   routes: [
     {path:"/",redirect:"/home"},
@@ -16,7 +17,8 @@ export default new Router({
     {path:"/menber",component:menberContainer},
     {path:"/shopcar",component:shopcarContainer},
     {path:"/search",component:searchContainer},
-    {path:"/home/newList",component:newListContainer}
+    {path:"/home/newList",component:newListContainer},
+    {path:"/home/newInfo/:id",component:newInfoContainer}
   ],
   linkActiveClass:" mui-active"
 })

@@ -19,31 +19,31 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="">
+        <router-link to>
           <img src="../../assets/menu2.png" alt>
           <div class="mui-media-body">图片分享</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="">
+        <router-link to>
           <img src="../../assets/menu3.png" alt>
           <div class="mui-media-body">商品购买</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="">
+        <router-link to>
           <img src="../../assets/menu4.png" alt>
           <div class="mui-media-body">留言反馈</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="">
+        <router-link to>
           <img src="../../assets/menu5.png" alt>
           <div class="mui-media-body">视频专区</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="">
+        <router-link to>
           <img src="../../assets/menu6.png" alt>
           <div class="mui-media-body">联系我们</div>
         </router-link>
@@ -64,16 +64,14 @@ export default {
   },
   methods: {
     getBannerDate() {
-      this.$http
-        .get("http://www.lovegf.cn:8899/api/getlunbo", { responseType: "json" })
-        .then(result => {
-          // console.log(result.body)
-          if (result.body.status == 0) {
-            this.listBanner = result.body.message;
-          } else {
-            Toast("获取轮播图数据失败!请重试!");
-          }
-        });
+      this.$http.get("api/getlunbo", { responseType: "json" }).then(result => {
+        // console.log(result.body)
+        if (result.body.status == 0) {
+          this.listBanner = result.body.message;
+        } else {
+          Toast("获取轮播图数据失败!请重试!");
+        }
+      });
       // console.log(111)
     }
   }
