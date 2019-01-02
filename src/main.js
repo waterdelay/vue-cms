@@ -25,22 +25,29 @@ import moment from "moment"
 Vue.filter("dataFormat",function(dateStr,pattern="YYYY-MM-DD HH:mm:ss"){
     return moment(dateStr).format(pattern)
 })
+
+//定义一个全局的组件
+import comment from "./components/comment/comment"
+// 定义全局组件, 参数1: 组件名 决定了将来如何使用 参数2: 组件对象
+Vue.component("comment", comment)
+
 Vue.use(MintUI)
 import {
   Header,
   Swipe,
   SwipeItem,
 } from 'mint-ui'
-
+Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+
 //导入mui
 import "./lib/mui/css/mui.min.css"
 //导入扩展图标样式
 import "./lib/mui/css/icons-extra.css"
 
 
-Vue.component(Header.name, Header);
+
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 import App from './App'

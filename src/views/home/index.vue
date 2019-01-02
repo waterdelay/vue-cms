@@ -2,7 +2,7 @@
   <div class="home_container">
     <!-- <h1>homeContainer</h1> -->
     <!-- 轮播囤 -->
-    <mt-swipe :auto="4000">
+    <mt-swipe :auto="2000" :speed="300">
       <mt-swipe-item v-for="(item,index) in listBanner" :key="index">
         <a :href="item.url">
           <img :src="item.img" alt>
