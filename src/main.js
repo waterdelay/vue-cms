@@ -7,23 +7,26 @@ import router from './router'
 // 引用MintUI组件 全局
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+// 1.2 安装路由
 // 导入vue-resource
 import VueResource from 'vue-resource'
+
 // 注册vue-resource
 Vue.use(VueResource)
+
 Vue.http.options.root = 'http://www.lovegf.cn:8899/';
 // 配置post请求以传统表单形式提交参数 application/x-www-form-urlencoded
 Vue.http.options.emulateJSON = true;
 
 Vue.config.productionTip = false
-// 1.2 安装路由
+
 
 //创建一个全局过滤器  更改时间格式
 //导入moment 时间包
 import moment from "moment"
 
-Vue.filter("dataFormat",function(dateStr,pattern="YYYY-MM-DD HH:mm:ss"){
-    return moment(dateStr).format(pattern)
+Vue.filter("dataFormat", function (dateStr, pattern = "YYYY-MM-DD HH:mm:ss") {
+  return moment(dateStr).format(pattern)
 })
 
 //定义一个全局的组件
@@ -32,24 +35,30 @@ import comment from "./components/comment/comment"
 Vue.component("comment", comment)
 
 Vue.use(MintUI)
-import {
-  Header,
-  Swipe,
-  SwipeItem,
-} from 'mint-ui'
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+// import {
+//   Header,
+//   Swipe,
+//   SwipeItem,
+// } from 'mint-ui'
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
 
 //导入mui
 import "./lib/mui/css/mui.min.css"
 //导入扩展图标样式
 import "./lib/mui/css/icons-extra.css"
+//导入vant-ui
+import { Tab, Tabs } from 'vant';
 
-
+Vue.use(Tab).use(Tabs);
 
 Vue.config.productionTip = false
-/* eslint-disable no-new */
+//缩略图
+import VuePreview from 'vue2-preview'
+Vue.use(VuePreview)
+
+
 import App from './App'
 new Vue({
   el: '#app',

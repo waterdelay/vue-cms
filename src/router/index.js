@@ -10,6 +10,11 @@ import shopcarContainer from "../views/shopcar"
 import searchContainer from "../views/search"
 import newListContainer from "@/views/newList"
 import newInfoContainer from "@/views/newInfo"
+import photoListContainer from "@/views/photoList"
+import photoInfoContainer from "@/views/photoInfo"
+import goodsListContainer from "@/views/goodsList"
+
+// 创建路由实例对象
 export default new Router({
   routes: [
     {path:"/",redirect:"/home"},
@@ -18,7 +23,10 @@ export default new Router({
     {path:"/shopcar",component:shopcarContainer},
     {path:"/search",component:searchContainer},
     {path:"/home/newList",component:newListContainer},
-    {path:"/home/newInfo/:id",component:newInfoContainer}
+    {path:"/home/newInfo/:id",component:newInfoContainer},
+    {path:"/home/photoList",component:photoListContainer},
+    {path:"/home/photoInfo/:id",component:photoInfoContainer},
+    {path:"/home/goodsList",component:goodsListContainer},
   ],
   linkActiveClass:" mui-active"
 })

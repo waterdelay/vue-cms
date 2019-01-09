@@ -1,6 +1,11 @@
 <template>
   <div class="newList">
-    <ul class="mui-table-view">
+    <ul
+      class="mui-table-view"
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="loading"
+      infinite-scroll-distance="5"
+    >
       <li class="mui-table-view-cell mui-media" v-for="(item) in newsList" :key="item.id">
         <router-link :to="'/home/newInfo/'+item.id">
           <img class="mui-media-object mui-pull-left" :src="item.img_url">
@@ -18,14 +23,17 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
-      newsList: []
+      newsList: [],
+      loading:false,
     };
   },
   created() {
     this.getNewsList();
+    // this.loadMore();
   },
   methods: {
     getNewsList() {
@@ -37,6 +45,17 @@ export default {
           Toast("加载失败");
         }
       });
+    },
+    //有问题
+    loadMore() {
+      this.loading = true;
+      this.$http.get("api/getnewslist").then(result=>{
+        // console.log(result.body)
+        if(result.body.message.length<10){
+          this.loading = false;
+        }
+      })
+      this.getNewsList()
     }
   }
 };

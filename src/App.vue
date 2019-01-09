@@ -27,19 +27,21 @@
       </router-link>
     </nav>
 
-    <transition>
+    <transition name="app">
       <router-view></router-view>
     </transition>
   </div>
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {};
 </script>
 
 <style lang="less" >
 body {
   background-color: #fff;
+  // touch-action: pan-y;
 }
 .app_container {
   padding-top: 40px;
@@ -53,19 +55,19 @@ body {
       background-color: pink;
     }
   }
-  .v-enter {
+  .app-enter {
     transform: translateX(100%);
     opacity: 0;
   }
 
-  .v-leave-to {
+  .app-leave-to {
     position: absolute;
     transform: translateX(-100%);
     opacity: 0;
   }
 
-  .v-enter-active,
-  .v-leave-active {
+  .app-enter-active,
+  .app-leave-active {
     transition: all 0.6s ease;
   }
 }

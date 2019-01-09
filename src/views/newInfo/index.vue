@@ -6,11 +6,17 @@
       <span>点击:&nbsp;&nbsp;{{ newsInfo.click }}次</span>
     </div>
     <hr>
+  <!-- 内容区域 -->
     <div class="content" v-html="newsInfo.content"></div>
+
+    <!-- 评论子组件区域 -->
+    <comment :id="this.id"></comment>
   </div>
+  
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
