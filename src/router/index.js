@@ -13,6 +13,8 @@ import newInfoContainer from "@/views/newInfo"
 import photoListContainer from "@/views/photoList"
 import photoInfoContainer from "@/views/photoInfo"
 import goodsListContainer from "@/views/goodsList"
+import goodsInfoContainer from "@/views/goodsInfo"
+import goodsDescContainer from "@/views/goodsDesc"
 
 // 创建路由实例对象
 export default new Router({
@@ -27,6 +29,9 @@ export default new Router({
     {path:"/home/photoList",component:photoListContainer},
     {path:"/home/photoInfo/:id",component:photoInfoContainer},
     {path:"/home/goodsList",component:goodsListContainer},
+    {path:"/home/goodsInfo/:id",component:goodsInfoContainer,name:"goodsInfo"},
+    { path: '/home/goodsDesc/:id', component: goodsDescContainer, name: 'goodsDesc' },
+ 
   ],
   linkActiveClass:" mui-active"
 })
