@@ -45,7 +45,7 @@ Vue.use(MintUI)
 // Vue.component(SwipeItem.name, SwipeItem);
 
 //导入mui
-import "./lib/mui/css/mui.min.css"
+import "./lib/mui/css/mui.css"
 //导入扩展图标样式
 import "./lib/mui/css/icons-extra.css"
 //导入vant-ui
@@ -58,6 +58,20 @@ Vue.config.productionTip = false
 import VuePreview from 'vue2-preview'
 Vue.use(VuePreview)
 
+//引入vuex
+import Vuex from "vuex"
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state:{
+
+  },
+  mutations:{
+
+  },
+  getters:{
+    
+  }
+});
 
 import App from './App'
 new Vue({
