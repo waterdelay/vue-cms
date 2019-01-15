@@ -58,12 +58,24 @@ Vue.config.productionTip = false
 import VuePreview from 'vue2-preview'
 Vue.use(VuePreview)
 
+//改用Axios
+//引入axios
+import axios from "axios"
+//挂载到Vue的原型上
+Vue.prototype.$axios=axios
+//引入qs模块  处理post请求传递给后台的参数格式  改成a=b  =>{"a":"b"}
+import QS from 'qs'
+Vue.prototype.qs = QS;
+
+
+
 //引入vuex
 import Vuex from "vuex"
 Vue.use(Vuex)
+//这里是Vuex的
 const store = new Vuex.Store({
   state:{
-
+    
   },
   mutations:{
 
@@ -77,5 +89,7 @@ import App from './App'
 new Vue({
   el: '#app',
   router,
+  axios,
+  QS,
   render: h => h(App)
 })
