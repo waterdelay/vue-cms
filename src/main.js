@@ -75,10 +75,13 @@ Vue.use(Vuex)
 //这里是Vuex的
 const store = new Vuex.Store({
   state:{
-    
+    data:JSON.parse(localStorage.getItem("data"))||[]
   },
   mutations:{
-
+    getGoodsInfo(state,data){
+     state.data=data
+    },
+    
   },
   getters:{
     
@@ -91,5 +94,6 @@ new Vue({
   router,
   axios,
   QS,
+  store,
   render: h => h(App)
 })

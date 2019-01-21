@@ -5,12 +5,20 @@ axios.defaults.timeout=5000   //响应时间
 
 axios.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded;charset=UTF-8' //设置响应头
 
-axios.defaults.baseURL=""  //配置接口地址
+axios.defaults.baseURL="http://www.lovegf.cn:8899/"  //配置接口地址
 
 // post 传参序列化（添加请求拦截器）
 axios.interceptors.request.use((config)=>{
     //在发送请求之前做某件事
-    console.log(config)
+    // 这里的token必须在函数内部   不然会有缓存
+    // const token=localStorage.getItem("token")
+    //config 是请求的配置对象，里面有存储的当前请求方法、请求路劲、请求信息
+    // console.log(config)
+    // 我们可以判断token
+    // if(token){
+    //     config.headers.Authorization=token
+    // }     两个拦截功能  任选其一
+
     if(config.method==='post'){
         config.data=qs.stringify(config.data)
     }
@@ -23,8 +31,10 @@ axios.interceptors.request.use((config)=>{
 //返回状态判断（添加先响应拦截器）
 
 axios.interceptors.response.use((res)=>{
+    // console.log(res)
     //对响应数据操作
-    if(!res.data.success){
+    // 这里看后台接口传递的状态码
+    if(res.data.status!=0){
         return Promise.reject(res)
     }
     return Promise.resolve(res)
@@ -62,7 +72,6 @@ export function fetchGet(url,param){
         })
     })
 }
-
 
 export default {
     fetchPost,

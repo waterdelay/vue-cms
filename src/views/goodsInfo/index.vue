@@ -25,10 +25,12 @@
           </span>
         </p>
         <div class="mui-card-content-inner">
-          <goodsbox></goodsbox>
+
+          <goodsbox @func="getmsg"></goodsbox>
+
           <div class="tabbtn">
             <mt-button type="primary">立即购买</mt-button>
-            <mt-button type="danger" @click="goToCar">加入购物车</mt-button>
+            <mt-button type="danger" @click="goToCar" >加入购物车</mt-button>
           </div>
         </div>
       </div>
@@ -52,12 +54,13 @@
 
 <script>
 import goodsbox from "../../components/comment/goodsBox";
+import http from "../../http.js"
 export default {
   data() {
     return {
+      count:1,
       id: this.$route.params.id,
       ballFlag:false,
-      count:1,//默认1件
       lunboList: [], //轮播图信息
       goodsInfo: {}
     };
@@ -97,6 +100,29 @@ export default {
     },
     goToCar(){
       this.ballFlag = !this.ballFlag;
+      http.fetchGet("api/goods/getinfo/"+this.id).then(result=>{
+        console.log(result)
+        let data={
+          id:result.data.message[0].id,
+          count:this.count,
+          goods_no:result.data.message[0]. goods_no,
+          market_price:result.data.message[0].market_price,
+          sell_price:result.data.message[0].sell_price,
+          stock_quantity:result.data.message[0].stock_quantity
+        }
+        let msg=JSON.stringify(data)
+        console.log(data)
+        localStorage.setItem("data",msg)
+
+
+         let mata=JSON.parse(localStorage.getItem("data"))
+          this.$store.commit('getGoodsInfo',mata)
+      })
+    },
+    getmsg(data){
+      // console.log(data)
+      this.count=data
+      console.log(this.count)
     },
     //定义小球半场动画
     beforeEnter(el) {
